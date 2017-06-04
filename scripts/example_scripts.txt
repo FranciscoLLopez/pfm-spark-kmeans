@@ -1,0 +1,5 @@
+// Batch K (cluster) N (dimension) F (folder HDFS)
+spark-submit --master local[4] --name sparkBatch --driver-class-path "jars/*:config:dataset" --class org.pfm.spark.batch.KMeansBatch pfm-spark-kmeans-0.0.1.jar 4 2 /tmp/staging/in/kschool-topic/17-05-28/14/
+
+// Stream K (cluster) N (dimension) T (time seconds for minibatch)
+spark-submit --master local[4] --name sparkStream --driver-class-path "jars/*:config:dataset" --class org.pfm.spark.stream.KMeansStream pfm-spark-kmeans-0.0.1.jar 4 2 2L

@@ -1,0 +1,46 @@
+CREATE DATABASE pfm;
+USE pfm;
+
+CREATE EXTERNAL TABLE realfraud_batch ( 
+id BIGINT,
+amount FLOAT,
+class TINYINT,
+cluster TINYINT,
+umbral DECIMAL(20,15))
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LOCATION '/tmp/source/batch/real_fraud'
+TBLPROPERTIES ("skip.header.line.count"="1");
+
+CREATE EXTERNAL TABLE order_batch ( 
+id BIGINT,
+amount FLOAT,
+class TINYINT,
+cluster TINYINT,
+umbral DECIMAL(20,15))
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LOCATION '/tmp/source/batch/order'
+TBLPROPERTIES ("skip.header.line.count"="1"); 
+
+CREATE EXTERNAL TABLE realfraud_stream ( 
+id BIGINT,
+amount FLOAT,
+class TINYINT,
+cluster TINYINT,
+umbral DECIMAL(20,15))
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LOCATION '/tmp/source/stream/real_fraud'
+TBLPROPERTIES ("skip.header.line.count"="1"); 
+
+CREATE EXTERNAL TABLE order_stream ( 
+id BIGINT,
+amount FLOAT,
+class TINYINT,
+cluster TINYINT,
+umbral DECIMAL(20,15))
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LOCATION '/tmp/source/stream/order'
+TBLPROPERTIES ("skip.header.line.count"="1");
